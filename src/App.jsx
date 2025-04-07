@@ -1,8 +1,8 @@
 import './assets/styles.css';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
-// Importera sidor
+// Import pages
 import Home from './assets/components/Home.jsx';
 import About from './assets/components/About.jsx';
 import Cv from './assets/components/Cv.jsx';
@@ -23,7 +23,7 @@ function App() {
     }
   };
 
-  // Easter egg: klickandet av logo "mitt cv" byter bakgrund
+  // Easter egg: Click på loggan för att byta bakgrund
   const handleLogoClick = () => {
     setEasterEggActive(!easterEggActive);
     document.body.style.backgroundImage = easterEggActive
@@ -31,7 +31,7 @@ function App() {
       : "url('/profile.jpg')";  
   };
 
-  // Easter egg: lyssnar efter tangetbordets input (hemlig kod)
+  // Easter egg: Lyssnar efter specifik kod i keypress
   useEffect(() => {
     const secretCode = '1337';
 
@@ -39,7 +39,7 @@ function App() {
       setInputSequence((prev) => {
         const newSequence = prev + event.key;
         if (newSequence.includes(secretCode)) {
-          alert('Grattis, du hittade ett påskägg! 🎉');
+          alert('You found the easter egg! 🎉');
           return '';
         }
         return newSequence; 
@@ -53,7 +53,6 @@ function App() {
     };
   }, []);
 
-
   const handleModalStateChange = (isOpen) => {
     setIsModalOpen(isOpen);
     if (isOpen) {
@@ -62,25 +61,22 @@ function App() {
   };
 
   return (
-    <Router>
+    <>
       {/* Navigation */}
       <nav>
         <div className="nav-container">
-          {/* ✅ Logo på vänster sida*/}
           <div className="logo" onClick={handleLogoClick}>Mitt CV</div>
 
-          {/* ✅ Hamburger meny centered */}
           <div className="hamburger" onClick={toggleMenu}>
             ☰
           </div>
 
-          {/* ✅ Navigation links */}
           <ul className={`nav-links ${menuActive ? 'active' : ''}`}>
-            <li><Link to="/" onClick={() => setMenuActive(false)}>Hem</Link></li>
-            <li><Link to="/about" onClick={() => setMenuActive(false)}>Om mig</Link></li>
+            <li><Link to="/" onClick={() => setMenuActive(false)}>Home</Link></li>
+            <li><Link to="/about" onClick={() => setMenuActive(false)}>About</Link></li>
             <li><Link to="/cv" onClick={() => setMenuActive(false)}>CV</Link></li>
             <li><Link to="/portfolio" onClick={() => setMenuActive(false)}>Portfolio</Link></li>
-            <li><Link to="/contact" onClick={() => setMenuActive(false)}>Kontakt</Link></li>
+            <li><Link to="/contact" onClick={() => setMenuActive(false)}>Contact</Link></li>
           </ul>
         </div>
       </nav>
@@ -94,7 +90,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 

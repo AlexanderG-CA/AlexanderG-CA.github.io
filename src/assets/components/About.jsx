@@ -13,7 +13,7 @@ function About() {
         <main>
           <section>
             <h2>Hej, jag heter Alexander Gorie</h2>
-            <img src="/profile.jpg" alt="Profilbild" />
+            <img src="./profile.jpg" alt="Profilbild" />
             <p className="aboutText">
               Jag är 24 år och en passionerad utvecklare med 2 dagars erfarenhet inom webbutveckling och programmering. 
               Jag älskar att skapa användarvänliga och responsiva webbplatser.
