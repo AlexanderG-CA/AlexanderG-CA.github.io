@@ -28,7 +28,7 @@ function App() {
     setEasterEggActive(!easterEggActive);
     document.body.style.backgroundImage = easterEggActive
       ? "none"
-      : "url('/profile.jpg')";  
+      : "url('./profile.jpg')";  
   };
 
   // Easter egg: Lyssnar efter specifik kod i keypress

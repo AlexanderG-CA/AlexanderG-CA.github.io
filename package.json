@@ -1,14 +1,15 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "homepage": "https://AlexanderG-CA.github.io/AlexanderG-CA.github.io",
+  "homepage": "https://alexanderg-ca.github.io/AlexanderG-CA.github.io/",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "postbuild": "cp dist/index.html dist/404.html"
   },
   "keywords": [],
   "author": "",

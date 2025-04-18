@@ -10,7 +10,7 @@ function closeModal(modalId) {
 
 // Påskägg 1: Byt bakgrund vid klick på "Mitt CV"
 document.querySelector('.logo').addEventListener('click', function() {
-    document.body.style.backgroundImage = "url('/public/profile.jpg')";
+    document.body.style.backgroundImage = "url('./profile.jpg')";
 });
 
 // Påskägg 2: Visa modal vid tangentbordsinput
