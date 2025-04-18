@@ -2,7 +2,7 @@ import './assets/styles.css';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 
-// Import pages
+// Importera sidor
 import Home from './assets/components/Home.jsx';
 import About from './assets/components/About.jsx';
 import Cv from './assets/components/Cv.jsx';
@@ -23,15 +23,15 @@ function App() {
     }
   };
 
-  // Easter egg: Click på loggan för att byta bakgrund
+  // Easter egg: klickandet av logo "mitt cv" byter bakgrund
   const handleLogoClick = () => {
     setEasterEggActive(!easterEggActive);
     document.body.style.backgroundImage = easterEggActive
       ? "none"
-      : "url('./profile.jpg')";  
+      : "url('profile.jpg')";  
   };
 
-  // Easter egg: Lyssnar efter specifik kod i keypress
+  // Easter egg: lyssnar efter tangetbordets input (hemlig kod)
   useEffect(() => {
     const secretCode = '1337';
 
@@ -39,7 +39,7 @@ function App() {
       setInputSequence((prev) => {
         const newSequence = prev + event.key;
         if (newSequence.includes(secretCode)) {
-          alert('You found the easter egg! 🎉');
+          alert('Grattis, du hittade ett påskägg! 🎉');
           return '';
         }
         return newSequence; 
@@ -53,6 +53,7 @@ function App() {
     };
   }, []);
 
+
   const handleModalStateChange = (isOpen) => {
     setIsModalOpen(isOpen);
     if (isOpen) {
@@ -62,26 +63,20 @@ function App() {
 
   return (
     <>
-      {/* Navigation */}
       <nav>
         <div className="nav-container">
           <div className="logo" onClick={handleLogoClick}>Mitt CV</div>
-
-          <div className="hamburger" onClick={toggleMenu}>
-            ☰
-          </div>
-
+          <div className="hamburger" onClick={toggleMenu}>☰</div>
           <ul className={`nav-links ${menuActive ? 'active' : ''}`}>
-            <li><Link to="/" onClick={() => setMenuActive(false)}>Home</Link></li>
-            <li><Link to="/about" onClick={() => setMenuActive(false)}>About</Link></li>
+            <li><Link to="/" onClick={() => setMenuActive(false)}>Hem</Link></li>
+            <li><Link to="/about" onClick={() => setMenuActive(false)}>Om mig</Link></li>
             <li><Link to="/cv" onClick={() => setMenuActive(false)}>CV</Link></li>
             <li><Link to="/portfolio" onClick={() => setMenuActive(false)}>Portfolio</Link></li>
-            <li><Link to="/contact" onClick={() => setMenuActive(false)}>Contact</Link></li>
+            <li><Link to="/contact" onClick={() => setMenuActive(false)}>Kontakt</Link></li>
           </ul>
         </div>
       </nav>
 
-      {/* Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
